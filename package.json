@@ -1,0 +1,36 @@
+{
+  "name": "lemmatizer",
+  "version": "0.0.1",
+  "description": "English language lemmatizer",
+  "main": "./dist/index.js",
+  "types":"./dist/index.d.ts",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "en-inflectors": "^1.0.11",
+    "en-stemmer": "^1.0.3",
+    "en-lexicon": "^1.0.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "ts-node test/test.ts",
+    "build":"tsc",
+    "prepublish":"npm run test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FinNLP/lemmatizer.git"
+  },
+  "keywords": [
+    "lemma",
+    "lemmatizer",
+    "lemmatization"
+  ],
+  "author": "Alex Corvi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FinNLP/lemmatizer/issues"
+  },
+  "homepage": "https://github.com/FinNLP/lemmatizer#readme"
+}
