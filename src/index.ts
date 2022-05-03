@@ -14,7 +14,7 @@ export function lemmatizer(string:string):string{
 // removes prefixes
 export function unprefixer(string:string):string{
 	prefixes.forEach((prefix)=>{
-		if(string.startsWith(prefix) && lexicon[string.substr(prefix.length)]) {
+		if(string.startsWith(prefix) && typeof lexicon[string.substr(prefix.length)] === "string") {
 			string = string.substr(prefix.length);
 		}
 	});
@@ -31,20 +31,20 @@ function verbsAndNouns(token:string):string{
 // safe version of porter stemmer
 function safeStemmer(string:string){
 	const stem = stemmer(string);
-	if(lexicon[stem]) return stem;
-	else if(lexicon[stem+"e"]) return stem + "e";
-	else if(lexicon[stem+"y"]) return stem + "y";
-	else if(lexicon[stem+"l"]) return stem + "l";
+	if(typeof lexicon[stem] === "string") return stem;
+	else if(typeof lexicon[stem+"e"] === "string") return stem + "e";
+	else if(typeof lexicon[stem+"y"] === "string") return stem + "y";
+	else if(typeof lexicon[stem+"l"] === "string") return stem + "l";
 	else return string;
 }
 
 function isVerb(string:string):boolean{
-	if(lexicon[string] && lexicon[string].split("|").find(x=>x.startsWith("V"))) return true;
+	if(typeof lexicon[string] === "string" && lexicon[string].split("|").find(x=>x.startsWith("V"))) return true;
 	else return false;
 }
 
 function isPluralNoun(string:string):boolean{
-	if(lexicon[string] && lexicon[string].split("|").find(x=>x.startsWith("N") && x.endsWith("S"))) return true;
+	if(typeof lexicon[string] === "string" && lexicon[string].split("|").find(x=>x.startsWith("N") && x.endsWith("S"))) return true;
 	else return false;
 }
 
